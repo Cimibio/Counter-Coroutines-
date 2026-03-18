@@ -25,7 +25,6 @@ public class CountView : MonoBehaviour
     {
         _count.Changed -= UpdateText;
         _count.CountingStateChanged -= HandleCountingStateChanged;
-
         StopCountingCoroutine();
     }
 
@@ -33,7 +32,7 @@ public class CountView : MonoBehaviour
     {
         if (isCounting)
         {
-            StartCountingCoroutine(isCounting);
+            StartCountingCoroutine();
         }
         else
         {
@@ -41,14 +40,13 @@ public class CountView : MonoBehaviour
         }
     }
 
-    private void StartCountingCoroutine(bool isCounting)
+    private void StartCountingCoroutine()
     {
         if (_countingCoroutine != null)
         {
             StopCoroutine(_countingCoroutine);
         }
-
-        _countingCoroutine = StartCoroutine(CountRoutine(isCounting));
+        _countingCoroutine = StartCoroutine(CountRoutine());
     }
 
     private void StopCountingCoroutine()
@@ -60,9 +58,9 @@ public class CountView : MonoBehaviour
         }
     }
 
-    private IEnumerator CountRoutine(bool isCounting)
+    private IEnumerator CountRoutine()
     {
-        while (isCounting)
+        while (true)
         {
             yield return new WaitForSeconds(_interval);
             _count.Increase();
@@ -71,6 +69,6 @@ public class CountView : MonoBehaviour
 
     private void UpdateText(float value)
     {
-        _countText.text = value.ToString("F0");
+        _countText.text = value.ToString("");
     }
 }

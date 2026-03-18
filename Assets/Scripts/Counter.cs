@@ -4,19 +4,19 @@ using UnityEngine.UI;
 public class Counter : MonoBehaviour
 {
     [SerializeField] private Count _count;
-    [SerializeField] private Button _button;
+    [SerializeField] private MouseInputHandler _mouseInput;
 
     private void OnEnable()
     {
-        _button.onClick.AddListener(OnButtonClicked);
+        _mouseInput.OnMouseClicked += OnMouseClicked;
     }
 
     private void OnDisable()
     {
-        _button.onClick.RemoveListener(OnButtonClicked);
+        _mouseInput.OnMouseClicked -= OnMouseClicked;
     }
 
-    private void OnButtonClicked()
+    private void OnMouseClicked()
     {
         _count.ToggleCounting();
     }
