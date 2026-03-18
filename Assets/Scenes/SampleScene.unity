@@ -131,26 +131,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 411133469}
-  - component: {fileID: 411133468}
+  - component: {fileID: 411133470}
   m_Layer: 0
-  m_Name: MouseInputHandler
+  m_Name: MouseInputReader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &411133468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411133467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2688cde66504d954d8b012d360c77064, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &411133469
 Transform:
   m_ObjectHideFlags: 0
@@ -166,6 +154,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &411133470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411133467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2688cde66504d954d8b012d360c77064, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _primaryActionButton: 0
 --- !u!1 &672005263
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +672,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1390634770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390634772}
+  - component: {fileID: 1390634771}
+  m_Layer: 0
+  m_Name: CountingController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1390634771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390634770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d06b74bdbe168143b8b1e9137efde7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _count: {fileID: 1856882594}
+  _interval: 0.5
+--- !u!4 &1390634772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390634770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13.436941, y: 153.4094, z: 31.657356}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856882592
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,7 +751,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _count: {fileID: 1856882594}
   _countText: {fileID: 672005266}
-  _interval: 0.5
 --- !u!114 &1856882594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _count: {fileID: 1856882594}
-  _mouseInput: {fileID: 411133468}
+  _mouseInput: {fileID: 411133470}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -758,3 +804,4 @@ SceneRoots:
   - {fileID: 721720670}
   - {fileID: 1856882595}
   - {fileID: 411133469}
+  - {fileID: 1390634772}
