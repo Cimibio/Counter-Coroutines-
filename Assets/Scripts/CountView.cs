@@ -60,7 +60,7 @@ public class CountView : MonoBehaviour
 
     private IEnumerator CountRoutine()
     {
-        while (true)
+        while (_count.IsCounting)
         {
             yield return new WaitForSeconds(_interval);
             _count.Increase();
