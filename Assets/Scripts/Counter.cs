@@ -1,30 +1,43 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class CountingController : MonoBehaviour
+public class Counter : MonoBehaviour
 {
-    [SerializeField] private Count _count;
+    [SerializeField] private float _startNumber = 0f;
+    [SerializeField] private float _step = 1f;
     [SerializeField] private float _interval = 0.5f;
+
+    private float _currentNumber;
+    private bool _isCounting = false;
 
     private Coroutine _countingCoroutine;
 
-    private void OnEnable()
+    public event Action<float> Changed;
+
+    public float CurrentNumber => _currentNumber;
+
+    private void Awake()
     {
-        _count.CountingStateChanged += HandleCountingStateChanged;
+        _currentNumber = _startNumber;
     }
 
-    private void OnDisable()
-    {
-        _count.CountingStateChanged -= HandleCountingStateChanged;
-        StopCounting();
-    }
 
-    private void HandleCountingStateChanged(bool isCounting)
+    public void ToggleCounting()
     {
-        if (isCounting)
+        _isCounting = !_isCounting;
+
+        if (_isCounting)
             StartCounting();
         else
             StopCounting();
+    }
+
+
+    private void Increase()
+    {
+        _currentNumber += _step;
+        Changed?.Invoke(_currentNumber);
     }
 
     private void StartCounting()
@@ -46,10 +59,10 @@ public class CountingController : MonoBehaviour
 
     private IEnumerator CountRoutine()
     {
-        while (_count.IsCounting)
+        while (_isCounting)
         {
             yield return new WaitForSeconds(_interval);
-            _count.Increase();
+            Increase();
         }
     }
 }

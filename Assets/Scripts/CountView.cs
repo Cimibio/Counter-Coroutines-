@@ -3,18 +3,18 @@ using UnityEngine;
 
 public class CountView : MonoBehaviour
 {
-    [SerializeField] private Count _count;
+    [SerializeField] private Counter _counter;
     [SerializeField] private TextMeshProUGUI _countText;
 
     private void OnEnable()
     {
-        _count.Changed += UpdateText;
-        UpdateText(_count.CurrentNumber);
+        _counter.Changed += UpdateText;
+        UpdateText(_counter.CurrentNumber);
     }
 
     private void OnDisable()
     {
-        _count.Changed -= UpdateText;
+        _counter.Changed -= UpdateText;
     }
 
     private void UpdateText(float value)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Toggler : MonoBehaviour
 {
-    [SerializeField] private Count _count;
+    [SerializeField] private Counter _counter;
     [SerializeField] private MouseInputReader _mouseInput;
 
     private void OnEnable()
@@ -17,6 +17,6 @@ public class Toggler : MonoBehaviour
 
     private void OnMouseClick()
     {
-        _count.ToggleCounting();
+        _counter.ToggleCounting();
     }
 }
